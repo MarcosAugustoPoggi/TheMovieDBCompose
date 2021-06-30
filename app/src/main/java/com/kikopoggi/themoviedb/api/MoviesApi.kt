@@ -11,7 +11,6 @@ interface MoviesApi {
 
     @GET("/movie/top_rated")
     suspend fun getMovies(
-        @QueryMap queries: Map<String, String>,
         @Query("key") apiKey : String = API_KEY
     ): Response<moviesResult>
 }
