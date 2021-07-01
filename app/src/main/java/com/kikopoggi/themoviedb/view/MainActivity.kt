@@ -21,5 +21,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.fragmentFactory = fragmentFactory
         setContentView(R.layout.activity_main)
 
+        supportActionBar?.hide()
+
     }
 }
