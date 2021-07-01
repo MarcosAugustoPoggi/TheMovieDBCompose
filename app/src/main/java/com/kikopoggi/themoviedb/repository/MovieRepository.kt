@@ -16,14 +16,14 @@ class MovieRepository @Inject constructor(
             val response = moviesApi.getMovies()
             if (response.isSuccessful) {
                 response.body()?.let {
-                    return@let Resource.Success(it)
-                } ?: Resource.Error("Error")
+                    return@let Resource.success(it)
+                } ?: Resource.error("Error", null)
             } else {
-                Resource.Error("Error")
+                Resource.error("Error", null)
             }
 
         } catch (e: Exception) {
-            Resource.Error("Error or no  data!")
+            Resource.error("Error or no  data!", null)
         }
     }
 

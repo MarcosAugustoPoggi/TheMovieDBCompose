@@ -24,7 +24,7 @@ class MovieViewModel @Inject constructor(
 
     fun getMovies() {
 
-        movies.value = Resource.Loading(null)
+        movies.value = Resource.loading(null)
         viewModelScope.launch {
             val response = repository.getMovies()
             movies.value = response

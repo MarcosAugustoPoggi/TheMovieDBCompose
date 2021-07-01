@@ -9,8 +9,8 @@ import retrofit2.http.QueryMap
 
 interface MoviesApi {
 
-    @GET("/movie/top_rated")
+    @GET("movie/top_rated")
     suspend fun getMovies(
-        @Query("key") apiKey : String = API_KEY
+        @Query("api_key") apiKey : String = API_KEY
     ): Response<moviesResult>
 }
