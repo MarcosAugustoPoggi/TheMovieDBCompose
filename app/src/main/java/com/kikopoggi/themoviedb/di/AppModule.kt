@@ -13,7 +13,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
 
 
@@ -39,5 +38,6 @@ object AppModule {
             RequestOptions().placeholder(R.drawable.ic_movie)
                 .error(R.drawable.ic_error)
         )
+
 
 }
