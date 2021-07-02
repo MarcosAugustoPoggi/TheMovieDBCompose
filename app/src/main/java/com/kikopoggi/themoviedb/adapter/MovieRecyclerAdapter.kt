@@ -1,11 +1,13 @@
 package com.kikopoggi.themoviedb.adapter
 
 import android.net.Uri
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -14,6 +16,14 @@ import com.bumptech.glide.RequestManager
 import com.kikopoggi.themoviedb.R
 import com.kikopoggi.themoviedb.model.Result
 import com.kikopoggi.themoviedb.util.Constants.POSTER_BASE_URL
+import java.text.DateFormat
+import java.time.LocalDate
+import java.time.LocalDate.parse
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
+import java.util.*
+import java.util.logging.Level.parse
 import javax.inject.Inject
 
 class MovieRecyclerAdapter @Inject constructor(
@@ -48,6 +58,7 @@ class MovieRecyclerAdapter @Inject constructor(
         return MovieViewHolder(view)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: MovieRecyclerAdapter.MovieViewHolder, position: Int) {
         val movieView = holder.itemView.findViewById<ImageView>(R.id.ivPosterPath)
         val titleText = holder.itemView.findViewById<TextView>(R.id.tvTitle)
@@ -59,7 +70,9 @@ class MovieRecyclerAdapter @Inject constructor(
             val moviePoster : Uri = Uri.parse(POSTER_BASE_URL + movie.poster_path)
             glide.load(moviePoster).into(movieView)
             titleText.text = movie.title
-            dateText.text = movie.release_date
+            val date = LocalDate.parse(movie.release_date)
+            val formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
+            dateText.text = (date.format(formatter)).toString()
             voteText.text = movie.vote_average.toString()
             card.setOnClickListener {
                 onItemClickListener?.let { click ->

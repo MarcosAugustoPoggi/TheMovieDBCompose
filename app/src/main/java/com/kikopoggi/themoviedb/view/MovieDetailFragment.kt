@@ -1,8 +1,10 @@
 package com.kikopoggi.themoviedb.view
 
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.RequestManager
@@ -10,6 +12,9 @@ import com.kikopoggi.themoviedb.R
 import com.kikopoggi.themoviedb.databinding.FragmentMovieDetailBinding
 import com.kikopoggi.themoviedb.util.Constants
 import com.kikopoggi.themoviedb.viewmodel.MovieViewModel
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import javax.inject.Inject
 
 class MovieDetailFragment @Inject constructor(
@@ -19,6 +24,7 @@ class MovieDetailFragment @Inject constructor(
    lateinit var viewModel: MovieViewModel
    private var _binding : FragmentMovieDetailBinding? = null
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -26,13 +32,24 @@ class MovieDetailFragment @Inject constructor(
         val binding = FragmentMovieDetailBinding.bind(view)
          _binding = binding
 
-        val moviePoster : Uri = Uri.parse(Constants.POSTER_BASE_URL + viewModel.movie?.poster_path)
+        val movie = viewModel.movie
 
-        glide.load(moviePoster).into(binding.ivPosterMovie)
-        binding.tvTitle.text = viewModel.movie?.title
-        binding.tvVote.text = viewModel.movie?.vote_average.toString()
-        binding.tvData.text = viewModel.movie?.release_date
-        binding.tvIdioma.text = viewModel.movie?.original_language
+        movie?. let { movie ->
+
+            val moviePoster : Uri = Uri.parse(Constants.POSTER_BASE_URL + movie.poster_path)
+            glide.load(moviePoster).into(binding.ivPosterMovie)
+
+            binding.tvTitle.text = movie.title
+            binding.tvVote.text = movie.vote_average.toString()
+
+            val formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
+            val date = LocalDate.parse(movie.release_date)
+            binding.tvData.text = (date.format(formatter)).toString()
+
+            binding.tvIdioma.text = movie.original_language
+            binding.tvOverview.text = movie.overview
+
+        }
 
     }
 
