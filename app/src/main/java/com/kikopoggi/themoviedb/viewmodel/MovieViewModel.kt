@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kikopoggi.themoviedb.model.Result
 import com.kikopoggi.themoviedb.model.moviesResult
 import com.kikopoggi.themoviedb.repository.MovieRepository
 import com.kikopoggi.themoviedb.repository.MovieRepositoryInterface
@@ -21,6 +22,8 @@ class MovieViewModel @Inject constructor(
     private val movies = MutableLiveData<Resource<moviesResult>>()
     val moviesList: LiveData<Resource<moviesResult>>
         get() = movies
+
+    var movie: Result? = null
 
     fun getMovies() {
 

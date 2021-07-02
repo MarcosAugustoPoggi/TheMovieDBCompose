@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kikopoggi.themoviedb.R
 import com.kikopoggi.themoviedb.adapter.MovieRecyclerAdapter
@@ -15,7 +16,7 @@ import com.kikopoggi.themoviedb.viewmodel.MovieViewModel
 import javax.inject.Inject
 
 class MovieListFragment @Inject constructor(
-    val movieRecyclerAdapter: MovieRecyclerAdapter
+    private val movieRecyclerAdapter: MovieRecyclerAdapter
 ): Fragment(R.layout.fragment_movie_list) {
 
     lateinit var viewModel: MovieViewModel
@@ -35,6 +36,12 @@ class MovieListFragment @Inject constructor(
 
         binding.recyclerView.adapter = movieRecyclerAdapter
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        movieRecyclerAdapter.setOnMovieItemClickListener { movieClick ->
+            viewModel.movie = movieClick
+            findNavController().navigate(R.id.action_movieListFragment_to_movieDetailFragment)
+
+        }
 
     }
 
@@ -56,5 +63,10 @@ class MovieListFragment @Inject constructor(
                 }
             }
         })
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }

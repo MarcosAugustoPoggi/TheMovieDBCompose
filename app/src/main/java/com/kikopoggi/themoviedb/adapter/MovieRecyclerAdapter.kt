@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,8 @@ class MovieRecyclerAdapter @Inject constructor(
 ) : RecyclerView.Adapter<MovieRecyclerAdapter.MovieViewHolder>() {
 
     class MovieViewHolder(itemView : View) :RecyclerView.ViewHolder(itemView)
+
+    private var onItemClickListener : ((Result) -> Unit) ? = null
 
     private val diffUtil = object : DiffUtil.ItemCallback<Result>() {
         override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
@@ -50,6 +53,7 @@ class MovieRecyclerAdapter @Inject constructor(
         val titleText = holder.itemView.findViewById<TextView>(R.id.tvTitle)
         val dateText = holder.itemView.findViewById<TextView>(R.id.tvData)
         val voteText = holder.itemView.findViewById<TextView>(R.id.tvVote)
+        val card = holder.itemView.findViewById<CardView>(R.id.cardPlaca)
         val movie = movies[position]
         holder.itemView.apply {
             val moviePoster : Uri = Uri.parse(POSTER_BASE_URL + movie.poster_path)
@@ -57,7 +61,16 @@ class MovieRecyclerAdapter @Inject constructor(
             titleText.text = movie.title
             dateText.text = movie.release_date
             voteText.text = movie.vote_average.toString()
+            card.setOnClickListener {
+                onItemClickListener?.let { click ->
+                    click(movie)
+                }
+            }
         }
+    }
+
+    fun setOnMovieItemClickListener(listener : (Result) -> Unit) {
+        onItemClickListener = listener
     }
 
     override fun getItemCount(): Int {
