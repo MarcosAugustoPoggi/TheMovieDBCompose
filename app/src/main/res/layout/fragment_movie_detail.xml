@@ -12,43 +12,50 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/dark"
+            android:background="@drawable/gradient_a"
             >
 
+                <ImageView
+                    android:id="@+id/ivPosterMovie"
+                    android:layout_width="match_parent"
+                    android:layout_height="560dp"
+                    android:scaleType="matrix"
+                    android:elevation="3dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-        <ImageView
-            android:id="@+id/ivPosterMovie"
-            android:layout_width="match_parent"
-            android:layout_height="560dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:scaleType="centerCrop"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textColor="@color/mediumGray"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/roboto_condensed_bold"
-            android:text="Titulo do Filme"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivPosterMovie" />
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="286dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/roboto_condensed_bold"
+                    android:text="Titulo do Filme"
+                    android:shadowColor = "@color/darker"
+                    android:shadowDx = "3"
+                    android:shadowDy = "3"
+                    android:shadowRadius = "3"
+                    android:textColor="@color/mediumGray"
+                    android:textSize="28sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivPosterMovie" />
 
         <TextView
             android:id="@+id/tvVote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="18dp"
+            android:gravity="center"
             android:fontFamily="@font/roboto_medium"
-            android:textSize="32sp"
-            android:textColor="@color/mediumGray"
-            android:letterSpacing="-0.05"
+            android:textSize="24sp"
+            android:elevation="4dp"
+            android:textColor="@color/darker"
+            android:background="@drawable/circle"
+            android:letterSpacing="-0.1"
             android:text="10.0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivPosterMovie" />
@@ -59,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_condensed_regular"
-            android:textColor="@color/mediumGray"
+            android:textColor="@color/lightGray"
             android:text="Idioma original: "
             app:layout_constraintStart_toStartOf="@+id/tvTitle"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
@@ -69,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_condensed_regular"
-            android:textColor="@color/mediumGray"
+            android:textColor="@color/colorSecondary"
             android:textAllCaps="true"
             android:text="Inglês"
             android:textStyle="bold"
@@ -83,7 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_condensed_regular"
-            android:textColor="@color/mediumGray"
+            android:textColor="@color/lightGray"
             android:text="Lançamento: "
             app:layout_constraintStart_toStartOf="@+id/tvOriginal"
             app:layout_constraintTop_toBottomOf="@+id/tvOriginal" />
@@ -93,12 +100,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_condensed_regular"
-            android:textColor="@color/mediumGray"
+            android:textColor="@color/lightGray"
             android:textStyle="bold"
             android:text="00/00/0000"
             app:layout_constraintBottom_toBottomOf="@+id/tvLancamento"
             app:layout_constraintStart_toEndOf="@+id/tvLancamento"
             app:layout_constraintTop_toTopOf="@+id/tvLancamento" />
+
+                <TextView
+                    android:id="@+id/tvMedia"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/roboto_condensed_regular"
+                    android:text="Média"
+                    android:gravity="center"
+                    android:textColor="@color/colorSecondary"
+                    app:layout_constraintEnd_toEndOf="@+id/tvVote"
+                    app:layout_constraintStart_toStartOf="@+id/tvVote"
+                    app:layout_constraintTop_toBottomOf="@+id/tvVote"
+                    android:layout_width="wrap_content" />
 
                 <TextView
                     android:id="@+id/tvOverview"
