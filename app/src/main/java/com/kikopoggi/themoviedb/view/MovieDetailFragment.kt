@@ -42,10 +42,12 @@ class MovieDetailFragment @Inject constructor(
             binding.tvTitle.text = movie.title
             binding.tvVote.text = movie.vote_average.toString()
 
-            val formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-            val date = LocalDate.parse(movie.release_date)
-            binding.tvData.text = (date.format(formatter)).toString()
-
+            if (!movie.release_date.isNullOrBlank()) {
+                val date = LocalDate.parse(movie.release_date)
+                val formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
+                binding.tvData.text = (date.format(formatter)).toString()
+            }
+            
             binding.tvIdioma.text = movie.original_language
             binding.tvOverview.text = movie.overview
 

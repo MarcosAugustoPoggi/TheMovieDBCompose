@@ -17,6 +17,7 @@ import com.kikopoggi.themoviedb.R
 import com.kikopoggi.themoviedb.model.Result
 import com.kikopoggi.themoviedb.util.Constants.POSTER_BASE_URL
 import java.text.DateFormat
+import java.text.ParseException
 import java.time.LocalDate
 import java.time.LocalDate.parse
 import java.time.LocalDateTime
@@ -66,13 +67,16 @@ class MovieRecyclerAdapter @Inject constructor(
         val voteText = holder.itemView.findViewById<TextView>(R.id.tvVote)
         val card = holder.itemView.findViewById<CardView>(R.id.cardPlaca)
         val movie = movies[position]
+
         holder.itemView.apply {
             val moviePoster : Uri = Uri.parse(POSTER_BASE_URL + movie.poster_path)
             glide.load(moviePoster).into(movieView)
             titleText.text = movie.title
-            val date = LocalDate.parse(movie.release_date)
-            val formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
-            dateText.text = (date.format(formatter)).toString()
+            if (!movie.release_date.isNullOrBlank()) {
+                val date = LocalDate.parse(movie.release_date)
+                val formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
+                dateText.text = (date.format(formatter)).toString()
+            }
             voteText.text = movie.vote_average.toString()
             card.setOnClickListener {
                 onItemClickListener?.let { click ->
@@ -89,4 +93,6 @@ class MovieRecyclerAdapter @Inject constructor(
     override fun getItemCount(): Int {
         return movies.size
     }
+
+
 }

@@ -5,6 +5,6 @@ import com.kikopoggi.themoviedb.util.Resource
 
 interface MovieRepositoryInterface {
 
-    suspend fun getMovies() : Resource<moviesResult>
+    suspend fun getMovies(page : Int) : Resource<moviesResult>
 
 }

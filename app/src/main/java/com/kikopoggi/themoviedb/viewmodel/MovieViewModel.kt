@@ -1,5 +1,6 @@
 package com.kikopoggi.themoviedb.viewmodel
 
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,21 +19,20 @@ class MovieViewModel @Inject constructor(
     private val repository: MovieRepository
 ) : ViewModel() {
 
-
     private val movies = MutableLiveData<Resource<moviesResult>>()
     val moviesList: LiveData<Resource<moviesResult>>
         get() = movies
 
     var movie: Result? = null
 
-    fun getMovies() {
+    var page = 1
 
+    fun getMovies() {
         movies.value = Resource.loading(null)
+
         viewModelScope.launch {
-            val response = repository.getMovies()
+           val response = repository.getMovies(page)
             movies.value = response
         }
-
-
     }
 }
