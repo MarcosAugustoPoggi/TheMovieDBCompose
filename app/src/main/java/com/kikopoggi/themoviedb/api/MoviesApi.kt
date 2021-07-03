@@ -13,7 +13,7 @@ interface MoviesApi {
 
     // top_rated popular now_playing upcoming -> All working
 
-    @GET("movie/popular")
+    @GET("movie/top_rated")
     suspend fun getMovies(
         @Query("page") page: Int = PAGE_INIT,
         @Query("api_key") apiKey : String = API_KEY,
