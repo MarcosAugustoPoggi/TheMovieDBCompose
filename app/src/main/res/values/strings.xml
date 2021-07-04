@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">TheMovieDB</string>
     <string name="titulo_do_filme">Titulo do Filme</string>
-    <string name="idioma_original">Idioma original:</string>
-    <string name="lancamento">Lançamento:</string>
+    <string name="idioma_original">Idioma original: </string>
+    <string name="lancamento">Lançamento: </string>
+    <string name="poster_do_filme">Poster do Filme</string>
+    <string name="media">Média</string>
 </resources>

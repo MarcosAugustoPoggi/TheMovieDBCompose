@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+       <KeyFrameSet>
+           <KeyAttribute
+               motion:motionTarget="@+id/ivPosterMovie"
+               motion:framePosition="100"
+               android:alpha="0.5" />
+           <KeyAttribute
+               motion:motionTarget="@+id/tvTitle"
+               motion:framePosition="0"
+               android:scaleX=".7" />
+           <KeyAttribute
+               motion:motionTarget="@+id/tvTitle"
+               motion:framePosition="0"
+               android:scaleY=".7" />
+           <KeyAttribute
+               motion:motionTarget="@+id/tvTitle"
+               motion:framePosition="0"
+               android:translationX="-45dp" />
+           <KeyAttribute
+               motion:motionTarget="@+id/tvTitle"
+               motion:framePosition="0"
+               android:translationY="-10dp" />
+           <KeyAttribute
+               motion:motionTarget="@+id/tvVote"
+               motion:framePosition="0"
+               android:translationY="-18dp" />
+           <KeyAttribute
+               motion:motionTarget="@+id/tvVote"
+               motion:framePosition="0"
+               android:scaleX=".7" />
+           <KeyAttribute
+               motion:motionTarget="@+id/tvVote"
+               motion:framePosition="0"
+               android:scaleY=".7" />
+           <KeyAttribute
+               motion:motionTarget="@+id/tvMedia"
+               motion:framePosition="0"
+               android:translationY="-50dp" />
+           <KeyAttribute
+               motion:motionTarget="@+id/tvMedia"
+               motion:framePosition="46"
+               android:alpha="0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/tvMedia"
+               motion:framePosition="0"
+               android:alpha="0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/tvOriginal"
+               motion:framePosition="0"
+               android:alpha="0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/tvIdioma"
+               motion:framePosition="0"
+               android:alpha="0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/tvLancamento"
+               motion:framePosition="0"
+               android:alpha="0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/tvData"
+               motion:framePosition="0"
+               android:alpha="0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/scrollView"
+               motion:framePosition="0"
+               android:alpha="0" />
+       </KeyFrameSet>
+        <OnSwipe
+            motion:touchAnchorId="@+id/ivPosterMovie"
+            motion:touchAnchorSide="bottom" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/ivPosterMovie"
+            android:elevation="3dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="560dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/ivPosterMovie"
+            android:elevation="3dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/ivPosterMovie"
+            android:elevation="3dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+</MotionScene>
