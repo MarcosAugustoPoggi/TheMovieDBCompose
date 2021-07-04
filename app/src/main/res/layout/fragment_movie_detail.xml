@@ -18,8 +18,8 @@
                 <ImageView
                     android:id="@+id/ivPosterMovie"
                     android:layout_width="match_parent"
-                    android:layout_height="560dp"
-                    android:scaleType="matrix"
+                    android:layout_height="500dp"
+                    android:scaleType="centerCrop"
                     android:elevation="3dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
