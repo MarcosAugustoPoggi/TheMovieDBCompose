@@ -6,7 +6,6 @@ import com.bumptech.glide.request.RequestOptions
 import com.kikopoggi.themoviedb.R
 import com.kikopoggi.themoviedb.api.MoviesApi
 import com.kikopoggi.themoviedb.util.Constants.BASE_URL
-import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,9 +20,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-
-
-
     @Singleton
     @Provides
     fun provideMovieApi() : MoviesApi {
@@ -35,7 +31,6 @@ object AppModule {
 
     }
 
-
     @Singleton
     @Provides
     fun providesGlide(@ApplicationContext context: Context) = Glide.with(context)
@@ -43,6 +38,5 @@ object AppModule {
             RequestOptions().placeholder(R.drawable.ic_movie)
                 .error(R.drawable.ic_error)
         )
-
 
 }

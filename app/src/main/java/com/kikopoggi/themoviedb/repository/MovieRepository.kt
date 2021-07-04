@@ -10,10 +10,10 @@ class MovieRepository @Inject constructor(
     private val moviesApi: MoviesApi
 ): MovieRepositoryInterface {
 
-    override suspend fun getMovies(page: Int): Resource<moviesResult> {
+    override suspend fun getMovies(): Resource<moviesResult> {
         return try {
 
-            val response = moviesApi.getMovies(page)
+            val response = moviesApi.getMovies()
 
             if (response.isSuccessful) {
                 response.body()?.let {

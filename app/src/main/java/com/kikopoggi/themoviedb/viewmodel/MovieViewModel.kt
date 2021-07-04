@@ -1,13 +1,12 @@
 package com.kikopoggi.themoviedb.viewmodel
 
-import android.widget.Toast
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kikopoggi.themoviedb.model.Result
 import com.kikopoggi.themoviedb.model.moviesResult
-import com.kikopoggi.themoviedb.repository.MovieRepository
 import com.kikopoggi.themoviedb.repository.MovieRepositoryInterface
 import com.kikopoggi.themoviedb.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieViewModel @Inject constructor(
-    private val repository: MovieRepository
+    private val repository: MovieRepositoryInterface
 ) : ViewModel() {
 
     private val movies = MutableLiveData<Resource<moviesResult>>()
@@ -25,13 +24,11 @@ class MovieViewModel @Inject constructor(
 
     var movie: Result? = null
 
-    var page = 1
-
     fun getMovies() {
         movies.value = Resource.loading(null)
 
         viewModelScope.launch {
-           val response = repository.getMovies(page)
+           val response = repository.getMovies()
             movies.value = response
         }
     }

@@ -18,6 +18,5 @@ class MovieFragmentFactory @Inject constructor(
             MovieDetailFragment::class.java.name -> MovieDetailFragment(glide)
             else -> super.instantiate(classLoader, className)
         }
-
     }
 }

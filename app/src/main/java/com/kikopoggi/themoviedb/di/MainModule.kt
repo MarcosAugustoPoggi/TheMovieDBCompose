@@ -1,6 +1,5 @@
 package com.kikopoggi.themoviedb.di
 
-import com.kikopoggi.themoviedb.TheMovieDbApplication_HiltComponents
 import com.kikopoggi.themoviedb.api.MoviesApi
 import com.kikopoggi.themoviedb.repository.MovieRepository
 import com.kikopoggi.themoviedb.repository.MovieRepositoryInterface
@@ -13,7 +12,6 @@ import dagger.hilt.android.scopes.ActivityRetainedScoped
 @Module
 @InstallIn(ActivityRetainedComponent::class)
 object MainModule {
-
 
     @Provides
     @ActivityRetainedScoped

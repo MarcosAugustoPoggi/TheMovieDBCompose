@@ -33,7 +33,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/roboto_condensed_bold"
-                    android:text="Titulo do Filme"
+                    android:text="@string/titulo_do_filme"
                     android:shadowColor = "@color/darker"
                     android:shadowDx = "3"
                     android:shadowDy = "3"
@@ -67,7 +67,7 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_condensed_regular"
             android:textColor="@color/lightGray"
-            android:text="Idioma original: "
+            android:text="@string/idioma_original"
             app:layout_constraintStart_toStartOf="@+id/tvTitle"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
@@ -91,7 +91,7 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_condensed_regular"
             android:textColor="@color/lightGray"
-            android:text="Lançamento: "
+            android:text="@string/lancamento"
             app:layout_constraintStart_toStartOf="@+id/tvOriginal"
             app:layout_constraintTop_toBottomOf="@+id/tvOriginal" />
 

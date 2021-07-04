@@ -16,15 +16,9 @@ import com.bumptech.glide.RequestManager
 import com.kikopoggi.themoviedb.R
 import com.kikopoggi.themoviedb.model.Result
 import com.kikopoggi.themoviedb.util.Constants.POSTER_BASE_URL
-import java.text.DateFormat
-import java.text.ParseException
 import java.time.LocalDate
-import java.time.LocalDate.parse
-import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
-import java.util.*
-import java.util.logging.Level.parse
 import javax.inject.Inject
 
 class MovieRecyclerAdapter @Inject constructor(
@@ -93,6 +87,5 @@ class MovieRecyclerAdapter @Inject constructor(
     override fun getItemCount(): Int {
         return movies.size
     }
-
 
 }

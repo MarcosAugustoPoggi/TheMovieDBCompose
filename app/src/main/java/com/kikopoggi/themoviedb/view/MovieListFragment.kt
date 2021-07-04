@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kikopoggi.themoviedb.R
 import com.kikopoggi.themoviedb.adapter.MovieRecyclerAdapter
 import com.kikopoggi.themoviedb.databinding.FragmentMovieListBinding
-import com.kikopoggi.themoviedb.model.Result
 import com.kikopoggi.themoviedb.util.Status
 import com.kikopoggi.themoviedb.viewmodel.MovieViewModel
 import javax.inject.Inject
@@ -43,7 +42,6 @@ class MovieListFragment @Inject constructor(
             findNavController().navigate(R.id.action_movieListFragment_to_movieDetailFragment)
 
         }
-
     }
 
     private fun subscribeToObservers() {
@@ -51,7 +49,7 @@ class MovieListFragment @Inject constructor(
             when(it.status) {
                 Status.SUCCESS -> {
                    val movies = it.data?.results
-                    movieRecyclerAdapter.movies = (movies as List<Result>?)!!
+                    movieRecyclerAdapter.movies = movies!!
                     _binding?.progressBar?.visibility = View.GONE
                 }
 
