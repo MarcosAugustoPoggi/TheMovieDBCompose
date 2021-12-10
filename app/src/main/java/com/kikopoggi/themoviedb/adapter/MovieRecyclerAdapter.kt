@@ -53,6 +53,7 @@ class MovieRecyclerAdapter @Inject constructor(
         return MovieViewHolder(view)
     }
 
+    // TODO: Change LocalDate to avoid RequiresAPI crash
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: MovieRecyclerAdapter.MovieViewHolder, position: Int) {
         val movieView = holder.itemView.findViewById<ImageView>(R.id.ivPosterPath)
